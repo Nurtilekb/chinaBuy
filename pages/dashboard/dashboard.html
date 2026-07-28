@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - ChinaBuy Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../src/css/main.css">
+    <link rel="stylesheet" href="../../src/css/dashboard.css">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="../../index.html" class="sidebar-logo">
+                    <span class="logo-icon">📦</span>
+                    <span class="logo-text">ChinaBuy<span class="logo-accent">Pro</span></span>
+                </a>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Основное</div>
+                    <a href="dashboard.html" class="nav-item active">
+                        <span class="nav-item-icon">🏠</span>
+                        <span>Главная</span>
+                    </a>
+                    <a href="../orders/orders.html" class="nav-item">
+                        <span class="nav-item-icon">📋</span>
+                        <span>Заказы</span>
+                        <span class="nav-item-badge">3</span>
+                    </a>
+                    <a href="new-order.html" class="nav-item">
+                        <span class="nav-item-icon">➕</span>
+                        <span>Новый заказ</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Коммуникация</div>
+                    <a href="../chat/chat.html" class="nav-item">
+                        <span class="nav-item-icon">💬</span>
+                        <span>Чат</span>
+                        <span class="nav-item-badge">2</span>
+                    </a>
+                    <a href="../notifications/notifications.html" class="nav-item">
+                        <span class="nav-item-icon">🔔</span>
+                        <span>Уведомления</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Аккаунт</div>
+                    <a href="../profile/profile.html" class="nav-item">
+                        <span class="nav-item-icon">👤</span>
+                        <span>Профиль</span>
+                    </a>
+                    <a href="../profile/settings.html" class="nav-item">
+                        <span class="nav-item-icon">⚙️</span>
+                        <span>Настройки</span>
+                    </a>
+                </div>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar">ИП</div>
+                    <div class="user-info">
+                        <div class="user-name">Иван Петров</div>
+                        <div class="user-email">ivan@example.com</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <h1 class="page-title">Главная</h1>
+                </div>
+                <div class="top-bar-right">
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" class="search-input" placeholder="Поиск заказов...">
+                    </div>
+                    <button class="icon-btn has-notification">
+                        🔔
+                        <span class="notification-dot"></span>
+                    </button>
+                    <button class="icon-btn">⚙️</button>
+                </div>
+            </header>
+            
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Stats Grid -->
+                <div class="dashboard-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <div class="stat-card-icon primary">📦</div>
+                        </div>
+                        <div class="stat-card-value">12</div>
+                        <div class="stat-card-label">Активных заказа</div>
+                        <div class="stat-card-trend trend-up">
+                            ↑ 2 новых за неделю
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <div class="stat-card-icon success">💰</div>
+                        </div>
+                        <div class="stat-card-value">¥45,280</div>
+                        <div class="stat-card-label">Всего потрачено</div>
+                        <div class="stat-card-trend trend-up">
+                            ↑ 12% к прошлому месяцу
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <div class="stat-card-icon warning">🚚</div>
+                        </div>
+                        <div class="stat-card-value">3</div>
+                        <div class="stat-card-label">В пути</div>
+                        <div class="stat-card-trend">
+                            Ожидаются до конца недели
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <div class="stat-card-icon info">✓</div>
+                        </div>
+                        <div class="stat-card-value">48</div>
+                        <div class="stat-card-label">Выполнено заказов</div>
+                        <div class="stat-card-trend trend-up">
+                            ↑ 98% успешных
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="orders-section" style="margin-bottom: var(--spacing-8);">
+                    <div class="section-header-row">
+                        <h2 class="section-title">Быстрые действия</h2>
+                    </div>
+                    <div style="display: flex; gap: var(--spacing-4); flex-wrap: wrap;">
+                        <a href="new-order.html" class="btn btn-primary">
+                            ➕ Создать заказ
+                        </a>
+                        <a href="../chat/chat.html" class="btn btn-outline">
+                            💬 Написать менеджеру
+                        </a>
+                        <a href="../orders/orders.html" class="btn btn-outline">
+                            📊 Отчет по заказам
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Recent Orders -->
+                <div class="orders-section">
+                    <div class="section-header-row">
+                        <h2 class="section-title">Последние заказы</h2>
+                        <a href="../orders/orders.html" class="view-all-link">Все заказы →</a>
+                    </div>
+                    
+                    <div class="order-list">
+                        <div class="order-item">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23f3f4f6' width='100' height='100'/%3E%3Ctext x='50' y='55' text-anchor='middle' font-size='24' fill='%239ca3af'%3E📱%3C/text%3E%3C/svg%3E" alt="Товар" class="order-image">
+                            <div class="order-details">
+                                <div class="order-id">Заказ #CB-2024-001</div>
+                                <div class="order-meta">Беспроводные наушники AirPods Pro • 2 шт.</div>
+                                <div class="order-meta">Создан 2 часа назад</div>
+                            </div>
+                            <span class="order-status status-pending">Ожидает оплаты</span>
+                            <div class="order-price">¥1,580</div>
+                        </div>
+                        
+                        <div class="order-item">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23f3f4f6' width='100' height='100'/%3E%3Ctext x='50' y='55' text-anchor='middle' font-size='24' fill='%239ca3af'%3E👟%3C/text%3E%3C/svg%3E" alt="Товар" class="order-image">
+                            <div class="order-details">
+                                <div class="order-id">Заказ #CB-2024-002</div>
+                                <div class="order-meta">Кроссовки Nike Air Max • 42 размер • 1 шт.</div>
+                                <div class="order-meta">Создан вчера</div>
+                            </div>
+                            <span class="order-status status-processing">Выкупается</span>
+                            <div class="order-price">¥890</div>
+                        </div>
+                        
+                        <div class="order-item">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23f3f4f6' width='100' height='100'/%3E%3Ctext x='50' y='55' text-anchor='middle' font-size='24' fill='%239ca3af'%3E⌚%3C/text%3E%3C/svg%3E" alt="Товар" class="order-image">
+                            <div class="order-details">
+                                <div class="order-id">Заказ #CB-2024-003</div>
+                                <div class="order-meta">Умные часы Xiaomi Mi Band 8 • Черный • 3 шт.</div>
+                                <div class="order-meta">Создан 3 дня назад</div>
+                            </div>
+                            <span class="order-status status-shipped">Отправлен</span>
+                            <div class="order-price">¥450</div>
+                        </div>
+                        
+                        <div class="order-item">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23f3f4f6' width='100' height='100'/%3E%3Ctext x='50' y='55' text-anchor='middle' font-size='24' fill='%239ca3af'%3E🎒%3C/text%3E%3C/svg%3E" alt="Товар" class="order-image">
+                            <div class="order-details">
+                                <div class="order-id">Заказ #CB-2024-004</div>
+                                <div class="order-meta">Рюкзак Xiaomi • Серый • 2 шт.</div>
+                                <div class="order-meta">Создан 5 дней назад</div>
+                            </div>
+                            <span class="order-status status-delivered">Доставлен</span>
+                            <div class="order-price">¥320</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="../../src/js/main.js"></script>
+</body>
+</html>
