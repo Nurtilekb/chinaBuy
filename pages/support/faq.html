@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - ChinaBuy Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../src/css/main.css">
+    <link rel="stylesheet" href="../../src/css/dashboard.css">
+    <style>
+        .faq-item {
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--spacing-3);
+            overflow: hidden;
+        }
+        .faq-question {
+            width: 100%;
+            padding: var(--spacing-5) var(--spacing-6);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-gray-900);
+            text-align: left;
+            transition: all var(--transition-fast);
+        }
+        .faq-question:hover {
+            background: var(--color-gray-50);
+        }
+        .faq-question.active {
+            background: var(--color-primary-50);
+            color: var(--color-primary-700);
+        }
+        .faq-icon {
+            font-size: var(--font-size-xl);
+            transition: transform var(--transition-fast);
+        }
+        .faq-question.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-normal);
+        }
+        .faq-answer-content {
+            padding: 0 var(--spacing-6) var(--spacing-6);
+            color: var(--color-gray-600);
+            line-height: var(--line-height-relaxed);
+        }
+        .faq-category {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-gray-900);
+            margin: var(--spacing-8) 0 var(--spacing-4);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="../../index.html" class="sidebar-logo">📦 ChinaBuy<span>Pro</span></a>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Основное</div>
+                    <a href="../dashboard/dashboard.html" class="nav-item"><span>🏠</span> Главная</a>
+                    <a href="../orders/orders.html" class="nav-item"><span>📋</span> Заказы</a>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-section-title">Помощь</div>
+                    <a href="faq.html" class="nav-item active"><span>❓</span> FAQ</a>
+                    <a href="support.html" class="nav-item"><span>💬</span> Поддержка</a>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-section-title">Аккаунт</div>
+                    <a href="../profile/profile.html" class="nav-item"><span>👤</span> Профиль</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="top-bar">
+                <h1 class="page-title">Часто задаваемые вопросы</h1>
+            </header>
+            <div class="content-area">
+                <div class="faq-category"><span>📦</span> Заказы и доставка</div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Как оформить заказ?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Для оформления заказа перейдите в раздел "Новый заказ", вставьте ссылку на товар с китайской площадки (1688, Taobao, Tmall), укажите количество, цвет, размер и другие параметры. Наш менеджер проверит доступность и рассчитает итоговую стоимость.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Сколько стоит доставка?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Стоимость доставки зависит от веса, габаритов товара и выбранного способа доставки. Ориентировочно: авиадоставка — от $8/кг, ж/д доставка — от $3/кг, морская доставка — от $1/кг. Точный расчет будет предоставлен после оформления заказа.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Какие сроки доставки?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Сроки доставки зависят от способа: авиадоставка — 7-15 дней, ж/д доставка — 20-35 дней, морская доставка — 35-50 дней. Также учитывайте время на выкуп товара (1-3 дня) и консолидацию на складе (2-5 дней).
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-category"><span>💰</span> Оплата</div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Какие способы оплаты доступны?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Мы принимаем оплату банковскими картами (Visa, MasterCard, МИР), банковским переводом по реквизитам, через системы быстрых платежей (СБП), а также криптовалюты (USDT, BTC).
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Есть ли комиссия за оплату?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            При оплате картой комиссия составляет 2.5%, при оплате через СБП — 1%, при оплате по реквизитам — без комиссии. Комиссия уже включена в итоговую сумму заказа.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-category"><span>🔒</span> Безопасность</div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Гарантируете ли вы получение товара?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Да, мы работаем официально по договору. Все товары страхуются на полную стоимость. В случае потери или повреждения товара вы получите полное возмещение или мы выкупим товар повторно за свой счет.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Как проверить качество товара?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            После получения товара на наш склад в Китае мы проводим бесплатную проверку: делаем фото и видео товара, проверяем комплектность и соответствие описанию. При обнаружении брака поможем вернуть товар поставщику.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../../src/js/main.js"></script>
+    <script>
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const isActive = this.classList.contains('active');
+                
+                // Close all
+                document.querySelectorAll('.faq-question').forEach(b => {
+                    b.classList.remove('active');
+                    b.nextElementSibling.style.maxHeight = '0';
+                });
+                
+                // Open clicked if wasn't active
+                if (!isActive) {
+                    this.classList.add('active');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

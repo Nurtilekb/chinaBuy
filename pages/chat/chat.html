@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чат - ChinaBuy Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../src/css/main.css">
+    <link rel="stylesheet" href="../../src/css/dashboard.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="../../index.html" class="sidebar-logo">
+                    <span>📦</span> ChinaBuy<span>Pro</span>
+                </a>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Основное</div>
+                    <a href="../dashboard/dashboard.html" class="nav-item"><span>🏠</span> Главная</a>
+                    <a href="../orders/orders.html" class="nav-item"><span>📋</span> Заказы</a>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-section-title">Коммуникация</div>
+                    <a href="chat.html" class="nav-item active"><span>💬</span> Чат</a>
+                    <a href="../notifications/notifications.html" class="nav-item"><span>🔔</span> Уведомления</a>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-section-title">Аккаунт</div>
+                    <a href="../profile/profile.html" class="nav-item"><span>👤</span> Профиль</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="top-bar">
+                <h1 class="page-title">Чат с поддержкой</h1>
+            </header>
+            <div class="content-area">
+                <div style="background:var(--color-white);border-radius:var(--radius-2xl);padding:var(--spacing-8);text-align:center;">
+                    <div style="font-size:64px;margin-bottom:var(--spacing-4);">💬</div>
+                    <h2 style="font-size:var(--font-size-2xl);font-weight:var(--font-weight-bold);margin-bottom:var(--spacing-2);">Чат</h2>
+                    <p style="color:var(--color-gray-500);margin-bottom:var(--spacing-6);">Выберите разговор слева или начните новый</p>
+                    <button class="btn btn-primary" onclick="Notification.show('Новый чат будет создан', 'info')">+ Новый чат</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../../src/js/main.js"></script>
+</body>
+</html>

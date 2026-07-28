@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поддержка - ChinaBuy Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../src/css/main.css">
+    <link rel="stylesheet" href="../../src/css/dashboard.css">
+    <style>
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-6);
+        }
+        .support-card {
+            background: var(--color-white);
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-6);
+            text-align: center;
+            border: 1px solid var(--color-gray-200);
+            transition: all var(--transition-fast);
+        }
+        .support-card:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-primary-300);
+        }
+        .support-icon {
+            font-size: 48px;
+            margin-bottom: var(--spacing-4);
+        }
+        .support-title {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-gray-900);
+            margin-bottom: var(--spacing-2);
+        }
+        .support-desc {
+            font-size: var(--font-size-sm);
+            color: var(--color-gray-500);
+            margin-bottom: var(--spacing-4);
+        }
+        .contact-info {
+            background: var(--color-white);
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-8);
+            margin-top: var(--spacing-8);
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-4);
+            padding: var(--spacing-4) 0;
+            border-bottom: 1px solid var(--color-gray-100);
+        }
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-xl);
+            background: var(--color-primary-50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-xl);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="../../index.html" class="sidebar-logo">📦 ChinaBuy<span>Pro</span></a>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Основное</div>
+                    <a href="../dashboard/dashboard.html" class="nav-item"><span>🏠</span> Главная</a>
+                    <a href="../orders/orders.html" class="nav-item"><span>📋</span> Заказы</a>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-section-title">Помощь</div>
+                    <a href="faq.html" class="nav-item"><span>❓</span> FAQ</a>
+                    <a href="support.html" class="nav-item active"><span>💬</span> Поддержка</a>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-section-title">Аккаунт</div>
+                    <a href="../profile/profile.html" class="nav-item"><span>👤</span> Профиль</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="top-bar">
+                <h1 class="page-title">Служба поддержки</h1>
+            </header>
+            <div class="content-area">
+                <div class="support-grid">
+                    <div class="support-card">
+                        <div class="support-icon">💬</div>
+                        <h3 class="support-title">Онлайн чат</h3>
+                        <p class="support-desc">Быстрый ответ в рабочее время</p>
+                        <a href="../chat/chat.html" class="btn btn-primary btn-block">Начать чат</a>
+                    </div>
+                    <div class="support-card">
+                        <div class="support-icon">📧</div>
+                        <h3 class="support-title">Email</h3>
+                        <p class="support-desc">Ответ в течение 24 часов</p>
+                        <a href="mailto:support@chinabuy.pro" class="btn btn-outline btn-block">Написать письмо</a>
+                    </div>
+                    <div class="support-card">
+                        <div class="support-icon">📱</div>
+                        <h3 class="support-title">Телефон</h3>
+                        <p class="support-desc">Пн-Пт с 9:00 до 18:00</p>
+                        <a href="tel:+79990000000" class="btn btn-outline btn-block">+7 (999) 000-00-00</a>
+                    </div>
+                    <div class="support-card">
+                        <div class="support-icon">📍</div>
+                        <h3 class="support-title">Офис</h3>
+                        <p class="support-desc">г. Москва, ул. Примерная 10</p>
+                        <button class="btn btn-outline btn-block" onclick="Notification.show('Адрес скопирован', 'success')">Показать адрес</button>
+                    </div>
+                </div>
+                
+                <div class="contact-info">
+                    <h2 style="font-size:var(--font-size-2xl);font-weight:var(--font-weight-bold);margin-bottom:var(--spacing-6);">Контактная информация</h2>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕐</div>
+                        <div>
+                            <strong>Режим работы</strong>
+                            <p style="color:var(--color-gray-500);font-size:var(--font-size-sm);">Понедельник - Пятница: 9:00 - 18:00 (МСК)</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">⚡</div>
+                        <div>
+                            <strong>Среднее время ответа</strong>
+                            <p style="color:var(--color-gray-500);font-size:var(--font-size-sm);">Чат: 2 минуты | Email: 4 часа | Телефон: мгновенно</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🌐</div>
+                        <div>
+                            <strong>Языки поддержки</strong>
+                            <p style="color:var(--color-gray-500);font-size:var(--font-size-sm);">Русский, Английский, Китайский</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../../src/js/main.js"></script>
+</body>
+</html>
