@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль - ChinaBuy Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../src/css/main.css">
+    <link rel="stylesheet" href="../../src/css/dashboard.css">
+    <style>
+        .profile-header {
+            background: var(--color-white);
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-8);
+            margin-bottom: var(--spacing-8);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-6);
+        }
+        
+        .profile-avatar-large {
+            width: 120px;
+            height: 120px;
+            border-radius: var(--radius-2xl);
+            background: linear-gradient(135deg, var(--color-primary-500) 0%, var(--color-accent-500) 100%);
+            color: var(--color-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-bold);
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        
+        .profile-avatar-large:hover::after {
+            content: '📷';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-3xl);
+        }
+        
+        .profile-info h1 {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-gray-900);
+            margin-bottom: var(--spacing-2);
+        }
+        
+        .profile-email {
+            font-size: var(--font-size-base);
+            color: var(--color-gray-500);
+            margin-bottom: var(--spacing-4);
+        }
+        
+        .profile-stats {
+            display: flex;
+            gap: var(--spacing-6);
+        }
+        
+        .profile-stat {
+            text-align: center;
+        }
+        
+        .profile-stat-value {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-gray-900);
+        }
+        
+        .profile-stat-label {
+            font-size: var(--font-size-xs);
+            color: var(--color-gray-500);
+        }
+        
+        .profile-sections {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: var(--spacing-8);
+        }
+        
+        .profile-section {
+            background: var(--color-white);
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-6);
+        }
+        
+        .section-title-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-6);
+        }
+        
+        .section-title {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-gray-900);
+        }
+        
+        .edit-btn {
+            font-size: var(--font-size-sm);
+            color: var(--color-primary-600);
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+        }
+        
+        .edit-btn:hover {
+            text-decoration: underline;
+        }
+        
+        .profile-form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-4);
+        }
+        
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+        
+        .input-with-icon {
+            position: relative;
+        }
+        
+        .input-icon {
+            position: absolute;
+            left: var(--spacing-3);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-gray-400);
+        }
+        
+        .input-with-icon .form-input {
+            padding-left: 44px;
+        }
+        
+        .verification-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-1);
+            padding: var(--spacing-1) var(--spacing-2);
+            background: var(--color-success-50);
+            color: var(--color-success-600);
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-medium);
+        }
+        
+        .security-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--spacing-4) 0;
+            border-bottom: 1px solid var(--color-gray-100);
+        }
+        
+        .security-item:last-child {
+            border-bottom: none;
+        }
+        
+        .security-info {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+        }
+        
+        .security-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-lg);
+            background: var(--color-gray-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-lg);
+        }
+        
+        .security-status {
+            font-size: var(--font-size-sm);
+            color: var(--color-gray-600);
+        }
+        
+        .security-status.verified {
+            color: var(--color-success-600);
+        }
+        
+        .toggle-btn {
+            width: 48px;
+            height: 28px;
+            background: var(--color-gray-200);
+            border-radius: 14px;
+            position: relative;
+            cursor: pointer;
+            transition: background var(--transition-fast);
+        }
+        
+        .toggle-btn.active {
+            background: var(--color-primary-600);
+        }
+        
+        .toggle-btn::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: var(--color-white);
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: transform var(--transition-fast);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .toggle-btn.active::after {
+            transform: translateX(20px);
+        }
+        
+        @media (max-width: 1024px) {
+            .profile-sections {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-stats {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="../../index.html" class="sidebar-logo">
+                    <span class="logo-icon">📦</span>
+                    <span class="logo-text">ChinaBuy<span class="logo-accent">Pro</span></span>
+                </a>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Основное</div>
+                    <a href="../dashboard/dashboard.html" class="nav-item">
+                        <span class="nav-item-icon">🏠</span>
+                        <span>Главная</span>
+                    </a>
+                    <a href="../orders/orders.html" class="nav-item">
+                        <span class="nav-item-icon">📋</span>
+                        <span>Заказы</span>
+                    </a>
+                    <a href="../orders/new-order.html" class="nav-item">
+                        <span class="nav-item-icon">➕</span>
+                        <span>Новый заказ</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Коммуникация</div>
+                    <a href="../chat/chat.html" class="nav-item">
+                        <span class="nav-item-icon">💬</span>
+                        <span>Чат</span>
+                    </a>
+                    <a href="../notifications/notifications.html" class="nav-item">
+                        <span class="nav-item-icon">🔔</span>
+                        <span>Уведомления</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Аккаунт</div>
+                    <a href="profile.html" class="nav-item active">
+                        <span class="nav-item-icon">👤</span>
+                        <span>Профиль</span>
+                    </a>
+                    <a href="settings.html" class="nav-item">
+                        <span class="nav-item-icon">⚙️</span>
+                        <span>Настройки</span>
+                    </a>
+                </div>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar">ИП</div>
+                    <div class="user-info">
+                        <div class="user-name">Иван Петров</div>
+                        <div class="user-email">ivan@example.com</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <h1 class="page-title">Профиль</h1>
+                </div>
+                <div class="top-bar-right">
+                    <button class="icon-btn" onclick="logout()">🚪 Выйти</button>
+                </div>
+            </header>
+            
+            <div class="content-area">
+                <!-- Profile Header -->
+                <div class="profile-header">
+                    <div class="profile-avatar-large" id="avatarLarge">ИП</div>
+                    <div class="profile-info">
+                        <h1 id="profileName">Иван Петров</h1>
+                        <p class="profile-email" id="profileEmail">ivan@example.com</p>
+                        <div class="profile-stats">
+                            <div class="profile-stat">
+                                <div class="profile-stat-value" id="totalOrders">12</div>
+                                <div class="profile-stat-label">Заказов</div>
+                            </div>
+                            <div class="profile-stat">
+                                <div class="profile-stat-value">¥45,280</div>
+                                <div class="profile-stat-label">Потрачено</div>
+                            </div>
+                            <div class="profile-stat">
+                                <div class="profile-stat-value">98%</div>
+                                <div class="profile-stat-label">Успешных</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Profile Sections -->
+                <div class="profile-sections">
+                    <!-- Personal Info -->
+                    <div class="profile-section">
+                        <div class="section-title-row">
+                            <h2 class="section-title">Личная информация</h2>
+                            <span class="edit-btn" onclick="toggleEditMode()">✏️ Редактировать</span>
+                        </div>
+                        
+                        <form id="profileForm" class="profile-form-grid">
+                            <div class="form-group">
+                                <label class="form-label">Фамилия</label>
+                                <input type="text" class="form-input" id="lastName" value="Петров" disabled>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Имя</label>
+                                <input type="text" class="form-input" id="firstName" value="Иван" disabled>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Отчество</label>
+                                <input type="text" class="form-input" id="middleName" value="Петрович" disabled>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Дата рождения</label>
+                                <input type="date" class="form-input" id="birthDate" value="1990-05-15" disabled>
+                            </div>
+                            
+                            <div class="form-group full-width input-with-icon">
+                                <label class="form-label">Email</label>
+                                <span class="input-icon">📧</span>
+                                <input type="email" class="form-input" id="emailInput" value="ivan@example.com" disabled>
+                                <span class="verification-badge" style="margin-top: var(--spacing-2);">✓ Подтверждён</span>
+                            </div>
+                            
+                            <div class="form-group full-width input-with-icon">
+                                <label class="form-label">Телефон</label>
+                                <span class="input-icon">📱</span>
+                                <input type="tel" class="form-input" id="phoneInput" value="+7 (999) 000-00-00" disabled>
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label class="form-label">Адрес доставки</label>
+                                <textarea class="form-textarea" id="address" disabled>Россия, г. Москва, ул. Примерная, д. 10, кв. 50</textarea>
+                            </div>
+                            
+                            <div class="form-group full-width" id="saveButtons" style="display: none;">
+                                <button type="button" class="btn btn-primary" onclick="saveProfile()">Сохранить изменения</button>
+                                <button type="button" class="btn btn-outline" onclick="cancelEdit()">Отмена</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Security -->
+                    <div class="profile-section">
+                        <div class="section-title-row">
+                            <h2 class="section-title">Безопасность</h2>
+                        </div>
+                        
+                        <div class="security-item">
+                            <div class="security-info">
+                                <div class="security-icon">🔐</div>
+                                <div>
+                                    <div class="security-status verified">Пароль установлен</div>
+                                    <div style="font-size: var(--font-size-xs); color: var(--color-gray-400);">Изменён 30 дней назад</div>
+                                </div>
+                            </div>
+                            <button class="btn btn-ghost" style="font-size: var(--font-size-xs);" onclick="changePassword()">Изменить</button>
+                        </div>
+                        
+                        <div class="security-item">
+                            <div class="security-info">
+                                <div class="security-icon">📱</div>
+                                <div>
+                                    <div class="security-status">Двухфакторная аутентификация</div>
+                                    <div style="font-size: var(--font-size-xs); color: var(--color-gray-400);">Повышает безопасность</div>
+                                </div>
+                            </div>
+                            <div class="toggle-btn" id="twoFactorToggle" onclick="toggleTwoFactor()"></div>
+                        </div>
+                        
+                        <div class="security-item">
+                            <div class="security-info">
+                                <div class="security-icon">💻</div>
+                                <div>
+                                    <div class="security-status">Активные сессии</div>
+                                    <div style="font-size: var(--font-size-xs); color: var(--color-gray-400);">2 устройства</div>
+                                </div>
+                            </div>
+                            <button class="btn btn-ghost" style="font-size: var(--font-size-xs);" onclick="showSessions()">Управление</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="../../src/js/main.js"></script>
+    <script>
+        let isEditMode = false;
+        
+        function toggleEditMode() {
+            isEditMode = !isEditMode;
+            const inputs = document.querySelectorAll('#profileForm input, #profileForm textarea');
+            const saveButtons = document.getElementById('saveButtons');
+            
+            inputs.forEach(input => {
+                input.disabled = !isEditMode;
+            });
+            
+            saveButtons.style.display = isEditMode ? 'flex' : 'none';
+            
+            if (!isEditMode) {
+                cancelEdit();
+            }
+        }
+        
+        function saveProfile() {
+            const profileData = {
+                lastName: document.getElementById('lastName').value,
+                firstName: document.getElementById('firstName').value,
+                middleName: document.getElementById('middleName').value,
+                birthDate: document.getElementById('birthDate').value,
+                email: document.getElementById('emailInput').value,
+                phone: document.getElementById('phoneInput').value,
+                address: document.getElementById('address').value
+            };
+            
+            // Save to localStorage (in real app, send to API)
+            localStorage.setItem('profile', JSON.stringify(profileData));
+            
+            // Update display
+            document.getElementById('profileName').textContent = `${profileData.firstName} ${profileData.lastName}`;
+            document.getElementById('profileEmail').textContent = profileData.email;
+            
+            Notification.show('Профиль успешно обновлён', 'success');
+            toggleEditMode();
+        }
+        
+        function cancelEdit() {
+            // Reload saved data
+            const savedProfile = JSON.parse(localStorage.getItem('profile'));
+            if (savedProfile) {
+                document.getElementById('lastName').value = savedProfile.lastName || 'Петров';
+                document.getElementById('firstName').value = savedProfile.firstName || 'Иван';
+                document.getElementById('middleName').value = savedProfile.middleName || 'Петрович';
+                document.getElementById('birthDate').value = savedProfile.birthDate || '1990-05-15';
+                document.getElementById('emailInput').value = savedProfile.email || 'ivan@example.com';
+                document.getElementById('phoneInput').value = savedProfile.phone || '+7 (999) 000-00-00';
+                document.getElementById('address').value = savedProfile.address || '';
+            }
+        }
+        
+        function changePassword() {
+            const newPassword = prompt('Введите новый пароль:');
+            if (newPassword && newPassword.length >= 8) {
+                Notification.show('Пароль успешно изменён', 'success');
+            } else if (newPassword) {
+                alert('Пароль должен быть не менее 8 символов');
+            }
+        }
+        
+        function toggleTwoFactor() {
+            const toggle = document.getElementById('twoFactorToggle');
+            toggle.classList.toggle('active');
+            const isEnabled = toggle.classList.contains('active');
+            Notification.show(isEnabled ? '2FA включена' : '2FA выключена', 'info');
+        }
+        
+        function showSessions() {
+            alert('Список активных сессий:\n\n1. Chrome на macOS (текущее)\n2. Safari на iPhone\n\nДля завершения сессий нажмите "Выйти везде"');
+        }
+        
+        function logout() {
+            if (confirm('Вы уверены, что хотите выйти?')) {
+                localStorage.removeItem('user');
+                window.location.href = '../../index.html';
+            }
+        }
+        
+        // Load saved profile on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedProfile = JSON.parse(localStorage.getItem('profile'));
+            if (savedProfile) {
+                document.getElementById('lastName').value = savedProfile.lastName || 'Петров';
+                document.getElementById('firstName').value = savedProfile.firstName || 'Иван';
+                document.getElementById('middleName').value = savedProfile.middleName || 'Петрович';
+                document.getElementById('birthDate').value = savedProfile.birthDate || '1990-05-15';
+                document.getElementById('emailInput').value = savedProfile.email || 'ivan@example.com';
+                document.getElementById('phoneInput').value = savedProfile.phone || '+7 (999) 000-00-00';
+                document.getElementById('address').value = savedProfile.address || '';
+            }
+        });
+    </script>
+</body>
+</html>

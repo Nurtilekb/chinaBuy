@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уведомления - ChinaBuy Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../src/css/main.css">
+    <link rel="stylesheet" href="../../src/css/dashboard.css">
+    <style>
+        .notification-item {
+            display: flex;
+            gap: var(--spacing-4);
+            padding: var(--spacing-4);
+            background: var(--color-white);
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--spacing-3);
+            border: 1px solid var(--color-gray-200);
+            transition: all var(--transition-fast);
+        }
+        .notification-item:hover {
+            border-color: var(--color-primary-300);
+            box-shadow: var(--shadow-sm);
+        }
+        .notification-item.unread {
+            background: var(--color-primary-50);
+            border-color: var(--color-primary-200);
+        }
+        .notification-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-lg);
+            flex-shrink: 0;
+        }
+        .notification-icon.order { background: var(--color-primary-100); }
+        .notification-icon.success { background: var(--color-success-100); }
+        .notification-icon.warning { background: var(--color-warning-100); }
+        .notification-icon.info { background: var(--color-info-100); }
+        .notification-content {
+            flex: 1;
+            min-width: 0;
+        }
+        .notification-title {
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-gray-900);
+            margin-bottom: 4px;
+        }
+        .notification-message {
+            font-size: var(--font-size-sm);
+            color: var(--color-gray-600);
+            margin-bottom: var(--spacing-2);
+        }
+        .notification-time {
+            font-size: var(--font-size-xs);
+            color: var(--color-gray-400);
+        }
+        .notification-actions {
+            display: flex;
+            gap: var(--spacing-2);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="../../index.html" class="sidebar-logo">📦 ChinaBuy<span>Pro</span></a>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Основное</div>
+                    <a href="../dashboard/dashboard.html" class="nav-item"><span>🏠</span> Главная</a>
+                    <a href="../orders/orders.html" class="nav-item"><span>📋</span> Заказы</a>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-section-title">Коммуникация</div>
+                    <a href="../chat/chat.html" class="nav-item"><span>💬</span> Чат</a>
+                    <a href="notifications.html" class="nav-item active"><span>🔔</span> Уведомления</a>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-section-title">Аккаунт</div>
+                    <a href="../profile/profile.html" class="nav-item"><span>👤</span> Профиль</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <h1 class="page-title">Уведомления</h1>
+                </div>
+                <div class="top-bar-right">
+                    <button class="btn btn-outline" onclick="markAllRead()">✓ Все прочитано</button>
+                </div>
+            </header>
+            <div class="content-area">
+                <div id="notificationsList">
+                    <div class="notification-item unread">
+                        <div class="notification-icon order">📦</div>
+                        <div class="notification-content">
+                            <div class="notification-title">Заказ #CB-2024-003 отправлен</div>
+                            <div class="notification-message">Ваш заказ был отправлен. Трек-номер: CN123456789</div>
+                            <div class="notification-time">10 минут назад</div>
+                        </div>
+                        <div class="notification-actions">
+                            <button class="btn btn-ghost" onclick="this.closest('.notification-item').classList.remove('unread')">✓</button>
+                        </div>
+                    </div>
+                    <div class="notification-item unread">
+                        <div class="notification-icon success">✓</div>
+                        <div class="notification-content">
+                            <div class="notification-title">Оплата прошла успешно</div>
+                            <div class="notification-message">Платеж на сумму ¥1,580 был успешно обработан</div>
+                            <div class="notification-time">2 часа назад</div>
+                        </div>
+                        <div class="notification-actions">
+                            <button class="btn btn-ghost" onclick="this.closest('.notification-item').classList.remove('unread')">✓</button>
+                        </div>
+                    </div>
+                    <div class="notification-item">
+                        <div class="notification-icon warning">⚠</div>
+                        <div class="notification-content">
+                            <div class="notification-title">Требуется подтверждение</div>
+                            <div class="notification-message">Подтвердите получение заказа #CB-2024-001</div>
+                            <div class="notification-time">Вчера</div>
+                        </div>
+                        <div class="notification-actions">
+                            <button class="btn btn-primary" style="font-size:var(--font-size-xs)">Подтвердить</button>
+                        </div>
+                    </div>
+                    <div class="notification-item">
+                        <div class="notification-icon info">ℹ</div>
+                        <div class="notification-content">
+                            <div class="notification-title">Новое сообщение от менеджера</div>
+                            <div class="notification-message">Менеджер Павел ответил на ваш вопрос</div>
+                            <div class="notification-time">Пн</div>
+                        </div>
+                        <div class="notification-actions">
+                            <a href="../chat/chat.html" class="btn btn-ghost">Открыть</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../../src/js/main.js"></script>
+    <script>
+        function markAllRead() {
+            document.querySelectorAll('.notification-item.unread').forEach(item => {
+                item.classList.remove('unread');
+            });
+            Notification.show('Все уведомления отмечены как прочитанные', 'success');
+        }
+    </script>
+</body>
+</html>

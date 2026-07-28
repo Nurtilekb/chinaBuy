@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Настройки - ChinaBuy Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../src/css/main.css">
+    <link rel="stylesheet" href="../../src/css/dashboard.css">
+    <style>
+        .settings-section {
+            background: var(--color-white);
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-6);
+            margin-bottom: var(--spacing-6);
+        }
+        .settings-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+            margin-bottom: var(--spacing-6);
+            padding-bottom: var(--spacing-4);
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+        .settings-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-lg);
+            background: var(--color-primary-50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-xl);
+        }
+        .settings-title {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-semibold);
+        }
+        .setting-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--spacing-4) 0;
+        }
+        .setting-info {
+            flex: 1;
+        }
+        .setting-label {
+            font-weight: var(--font-weight-medium);
+            color: var(--color-gray-900);
+            margin-bottom: 2px;
+        }
+        .setting-desc {
+            font-size: var(--font-size-sm);
+            color: var(--color-gray-500);
+        }
+        .toggle {
+            width: 48px;
+            height: 28px;
+            background: var(--color-gray-200);
+            border-radius: 14px;
+            position: relative;
+            cursor: pointer;
+            transition: background var(--transition-fast);
+        }
+        .toggle.active {
+            background: var(--color-primary-600);
+        }
+        .toggle::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: var(--color-white);
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: transform var(--transition-fast);
+            box-shadow: var(--shadow-sm);
+        }
+        .toggle.active::after {
+            transform: translateX(20px);
+        }
+        .select-lang {
+            padding: var(--spacing-2) var(--spacing-3);
+            border: 1px solid var(--color-gray-300);
+            border-radius: var(--radius-lg);
+            font-size: var(--font-size-sm);
+            background: var(--color-white);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="../../index.html" class="sidebar-logo">📦 ChinaBuy<span>Pro</span></a>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Основное</div>
+                    <a href="../dashboard/dashboard.html" class="nav-item"><span>🏠</span> Главная</a>
+                    <a href="../orders/orders.html" class="nav-item"><span>📋</span> Заказы</a>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-section-title">Аккаунт</div>
+                    <a href="profile.html" class="nav-item"><span>👤</span> Профиль</a>
+                    <a href="settings.html" class="nav-item active"><span>⚙️</span> Настройки</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="top-bar">
+                <h1 class="page-title">Настройки</h1>
+            </header>
+            <div class="content-area">
+                <!-- Notifications -->
+                <div class="settings-section">
+                    <div class="settings-header">
+                        <div class="settings-icon">🔔</div>
+                        <h2 class="settings-title">Уведомления</h2>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <div class="setting-label">Email уведомления</div>
+                            <div class="setting-desc">Получать уведомления о статусах заказа на email</div>
+                        </div>
+                        <div class="toggle active" onclick="this.classList.toggle('active')"></div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <div class="setting-label">Push уведомления</div>
+                            <div class="setting-desc">Получать push-уведомления в браузере</div>
+                        </div>
+                        <div class="toggle active" onclick="this.classList.toggle('active')"></div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <div class="setting-label">SMS уведомления</div>
+                            <div class="setting-desc">Получать SMS о важных событиях</div>
+                        </div>
+                        <div class="toggle" onclick="this.classList.toggle('active')"></div>
+                    </div>
+                </div>
+                
+                <!-- Language & Region -->
+                <div class="settings-section">
+                    <div class="settings-header">
+                        <div class="settings-icon">🌐</div>
+                        <h2 class="settings-title">Язык и регион</h2>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <div class="setting-label">Язык интерфейса</div>
+                            <div class="setting-desc">Выберите предпочтительный язык</div>
+                        </div>
+                        <select class="select-lang">
+                            <option value="ru">Русский</option>
+                            <option value="en">English</option>
+                            <option value="zh">中文</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <div class="setting-label">Валюта</div>
+                            <div class="setting-desc">В какой валюте отображать цены</div>
+                        </div>
+                        <select class="select-lang">
+                            <option value="cny">¥ Китайский юань</option>
+                            <option value="usd">$ Доллар США</option>
+                            <option value="rub">₽ Российский рубль</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Privacy -->
+                <div class="settings-section">
+                    <div class="settings-header">
+                        <div class="settings-icon">🔒</div>
+                        <h2 class="settings-title">Безопасность</h2>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <div class="setting-label">Двухфакторная аутентификация</div>
+                            <div class="setting-desc">Повышенная защита аккаунта</div>
+                        </div>
+                        <div class="toggle" onclick="this.classList.toggle('active'); Notification.show('2FA будет включена после подтверждения', 'info')"></div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <div class="setting-label">Смена пароля</div>
+                            <div class="setting-desc">Измените пароль для безопасности</div>
+                        </div>
+                        <button class="btn btn-outline" style="font-size:var(--font-size-sm)" onclick="Notification.show('Открывается форма смены пароля', 'info')">Изменить</button>
+                    </div>
+                </div>
+                
+                <!-- Danger Zone -->
+                <div class="settings-section" style="border:1px solid var(--color-error-200)">
+                    <div class="settings-header" style="border-color:var(--color-error-200)">
+                        <div class="settings-icon" style="background:var(--color-error-50)">⚠️</div>
+                        <h2 class="settings-title" style="color:var(--color-error-600)">Опасная зона</h2>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <div class="setting-label">Удалить аккаунт</div>
+                            <div class="setting-desc">Все данные будут безвозвратно удалены</div>
+                        </div>
+                        <button class="btn btn-error" style="font-size:var(--font-size-sm)" onclick="UI.showConfirm('Удаление аккаунта', 'Вы уверены? Это действие нельзя отменить.', () => Notification.show('Аккаунт удален', 'error'), null)">Удалить</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../../src/js/main.js"></script>
+</body>
+</html>
